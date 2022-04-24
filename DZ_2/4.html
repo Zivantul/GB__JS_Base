@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework_2_4</title>
+</head>
+
+<body>
+  <!--
+Обязательное задание.
+
+Необходимо реализовать четыре функции, каждая функция должна принимать по два
+числа и выполнять одну из операций (каждая функция выполняет одну из них):
+1. Сложение
+2. Разность
+3. Умножение
+4. Деление
+
+Необходимо сделать так, чтобы функция вернула число, например выражение
+`console.log(sum(2, 6));` должно вывести число 8 в консоль (sum - функция
+сложения в данном примере, ваши названия функций могут отличаться).
+
+Округлять значения, которые возвращают функции не нужно, однако, обратите
+внимание на разность, функция должна вычесть из большего числа меньшее, либо
+вернуть 0, если числа равны.
+
+Функциям всегда передаются корректные числа, проверки на NaN, Infinity делать
+не нужно.
+
+Необходимо для всех функций прописать комментарии jsdoc https://jsdoc.app/.
+-->
+  <script>
+    "use strict";
+
+    /* for test:
+    const a = +prompt("a:");
+    const b = +prompt("b:");
+    console.log(getSum(a, b));
+    console.log(getDiff(a, b));
+    console.log(getMult(a, b));
+    console.log(getDiv(a, b));
+    */
+
+    /*
+    * Sums 2 numbers
+    * @param {Number} a - The a value
+    * @param {Number} b - The b value
+    */
+    function getSum(a, b) {
+      return (a + b);
+    }
+
+    /*
+    * subtracts the smaller from the larger number. 
+      if numbers are equal, returns 0.
+    * @param {Number} a - The a value
+    * @param {Number} b - The b value
+    */
+    function getDiff(a, b) {
+      let result;
+      if (a > b) {
+        result = (a - b);
+      } else if (a < b) {
+        result = (b - a);
+      } else {
+        result = 0;
+      }
+      return result;
+    }
+
+    /*
+    * Multiply 2 numbers
+    * @param {Number} a - The a value
+    * @param {Number} b - The b value
+    */
+    function getMult(a, b) {
+      return (a * b);
+    }
+
+    /*
+    * dividing one number by another in the order of passing to the function
+    * @param {Number} a - The a value
+    * @param {Number} b - The b value
+    */
+    function getDiv(a, b) {
+      return (a / b);
+    }
+
+  </script>
+</body>
+
+</html>

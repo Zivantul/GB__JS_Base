@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework_1_4</title>
+</head>
+
+<body>
+  <!--
+Необязательное задание.
+
+Необходимо от пользователя получить число.
+Необходимо вывести разряды числа, а именно: количество сотен, десятков и единиц.
+
+Пример:
+Пользователь ввел число 163. Программа должна вывести:
+"В числе 163 количество сотен: 1, десятков: 6, единиц: 3"
+
+Пример 2:
+Пользователь ввел число 74. Программа должна вывести:
+"В числе 74 количество сотен: 0, десятков: 7, единиц: 4"
+
+Пример 3:
+Пользователь ввел число 9537. Программа должна вывести:
+"В числе 9537 количество сотен: 5, десятков: 3, единиц: 7"
+
+Уточнение: пользователь всегда вводит корректное положительное целое число.
+-->
+  <script>
+    "use strict";
+
+    const userNumber = Number(prompt("Дорогой, user, отдай число:"));
+    let tempRemainder;
+    const result = `В числе ${userNumber}`
+      + ` количество сотен: ${getNumHundredths(userNumber)},`
+      + ` десятков: ${getNumTenths(userNumber)},`
+      + ` единиц: ${getNumSingulars(userNumber)}`;
+
+    console.log(result);
+
+
+    function getNumSingulars(number) {
+      return number % 10;
+    }
+
+    function getNumTenths(number) {
+      tempRemainder = number % 100;
+      if (tempRemainder !== 0) {
+        return Math.floor(tempRemainder / 10);
+      }
+    }
+
+    function getNumHundredths(number) {
+      if (number > 1000) {
+        tempRemainder = number % 1000;
+        if (tempRemainder !== 0) {
+          return Math.floor(tempRemainder / 100);
+        }
+      } else {
+        return Math.floor(number / 100);
+      }
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework_2_6</title>
+</head>
+
+<body>
+  <!--
+Необязательное задание.
+
+Необходимо реализовать функцию, которая будет принимать первым аргументом
+целое положительное число, в следующих трех аргументах функция принимает слова
+в разных склонениях.
+Функция должна возвращать одно из трех переданных в параметры слов подходящее
+под число, которое передано первым аргументом.
+
+Пример:
+console.log(declinationOfNumber(1, "яблоко", "яблока", "яблок")); // "яблоко"
+console.log(declinationOfNumber(2, "мяч", "мяча", "мячей")); // "мяча"
+console.log(declinationOfNumber(5, "стул", "стула", "стульев")); // "стульев"
+
+Функция должна работать с любым словом и любым целым положительным числом.
+Все аргументы, которые будут передаваться функции будут верны.
+-->
+  <script>
+    "use strict";
+
+    // Число яблок, можно пробовать поставить свое целое, положительное число.
+    const applesNumber = Math.round(10 * Math.random());
+    //const applesNumber = prompt("Сколько у тебя яблок?");
+
+    // Получаем от функции одно из слов "яблоко", "яблока" или "яблок".
+    const word = declinationOfNumber(applesNumber, "яблоко", "яблока", "яблок");
+    // Выводим корректную строку, например:
+    // "У меня есть 1 яблоко."
+    // "У меня есть 2 яблока."
+    // "У меня есть 5 яблок."
+    // При любом целом, положительном числе в applesNumber, строка, которая
+    // выводится в console.log, должна иметь правильное склонение слова "яблоко".
+    console.log(`У меня есть ${applesNumber} ${word}.`);
+
+
+    /*
+     * Returns the correct declination 
+     * @param {Number} count - number for finding the correct declination
+     * @param {String} one - The value for every 1 unit
+     * @param {String} two - The value for every 2,3,4 units
+     * @param {String} five - The value for every 5,6,7,8,9,10 units
+     */
+    function declinationOfNumber(count, one, two, five) {
+      if (count >= 11 && count <= 19) {
+        return five;
+      } else {
+        const remainUnits = count % 10;
+        if (remainUnits === 1) {
+          return one;
+        } else if (remainUnits >= 2 && remainUnits < 5) {
+          return two;
+        } else if (remainUnits >= 5 && remainUnits <= 9) {
+          return five;
+        } else if (remainUnits === 0) {
+          return five;
+        }
+      }
+    }
+
+  </script>
+</body>
+
+</html>
