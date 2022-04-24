@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework_2_5</title>
+</head>
+
+<body>
+  <!--
+Обязательное задание.
+
+Необходимо скопировать и вставить в данный скрипт все функции из 4 задания.
+Необходимо реализовать функцию:
+mathOperation(arg1, arg2, operation);
+Параметры:
+arg1 - первое число.
+arg2 - второе число.
+operation - строка, которая содержит один символ из: "+", "-", "*", "/".
+Функция mathOperation должна вернуть результат операции, который был передан в
+параметр operation для двух первых аргументов (arg1 и arg2).
+Функция mathOperation должна использовать для вычисления функции из 4 задания.
+
+Примеры вызова функции:
+console.log(mathOperation(5, 3, "+")); // 8
+console.log(mathOperation(5, 3, ":)")); // NaN
+
+Функции mathOperation всегда передаются корректные числа, проверки на NaN,
+Infinity делать не нужно, однако, в случае если был передан некорректный
+аргумент в параметр operation, необходимо вернуть NaN.
+
+Необходимо для всех функций прописать комментарии jsdoc https://jsdoc.app/.
+-->
+  <script>
+    "use strict";
+    // Test:
+    console.log(mathOperation(5, 3, "+")); // 8
+    console.log(mathOperation(5, 3, ":)")); // NaN
+    console.log(mathOperation(3, 5, "-")); // 2
+    console.log(mathOperation(3, 5, "*")); // 15
+    console.log(mathOperation(10, 2, "/")); // 5
+    console.log(mathOperation(5, 3, "\)")); // NaN
+
+
+    /*
+     * Performs the necessary operation 
+     * @param {Number} arg1 - The arg1 value
+     * @param {Number} arg2 - The arg12 value
+     * @param {String} operation - operation type: "+", "-", "*", "/"
+     */
+    function mathOperation(arg1, arg2, operation) {
+      switch (operation) {
+        case '+':
+          return getSum(arg1, arg2);
+        case '-':
+          return getDiff(arg1, arg2);
+        case '*':
+          return getMult(arg1, arg2);
+        case '/':
+          return getDiv(arg1, arg2);
+        default:
+          return NaN;
+      }
+    }
+
+    /*
+     * Sums 2 numbers
+     * @param {Number} a - The a value
+     * @param {Number} b - The b value
+     */
+    function getSum(a, b) {
+      return (a + b);
+    }
+
+    /*
+    * subtracts the smaller from the larger number. 
+      if numbers are equal, returns 0.
+    * @param {Number} a - The a value
+    * @param {Number} b - The b value
+    */
+    function getDiff(a, b) {
+      let result;
+      if (a > b) {
+        result = (a - b);
+      } else if (a < b) {
+        result = (b - a);
+      } else {
+        result = 0;
+      }
+      return result;
+    }
+
+    /*
+    * Multiply 2 numbers
+    * @param {Number} a - The a value
+    * @param {Number} b - The b value
+    */
+    function getMult(a, b) {
+      return (a * b);
+    }
+
+    /*
+    * dividing one number by another in the order of passing to the function
+    * @param {Number} a - The a value
+    * @param {Number} b - The b value
+    */
+    function getDiv(a, b) {
+      return (a / b);
+    }
+
+  </script>
+</body>
+
+</html>
