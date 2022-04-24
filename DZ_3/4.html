@@ -47,13 +47,13 @@
     ];
 
     // 1.
-    let photoFiltered = products.filter(function (product) {
+    const photoFiltered = products.filter(function (product) {
       return product.photos && product.photos.length !== 0;
-    })
-    console.log(photoFiltered)
+    });
+    console.log(photoFiltered);
 
     // 2.
-    let sortedPrice = products.sort(function (product1, product2) {
+    const sortedPrice = products.sort(function (product1, product2) {
       if (product1.price > product2.price) {
         return 1;
       } else if (product1.price < product2.price) {
@@ -61,8 +61,8 @@
       } else {
         return 0;
       }
-    })
-    console.log(sortedPrice)
+    });
+    console.log(products);
 
   </script>
 </body>
