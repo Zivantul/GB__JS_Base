@@ -24,13 +24,13 @@
   <script>
     "use strict";
 
-    const tempСelsius = +prompt("Введите температуру в градусах Цельсия:");
-    let tempFahrenheit = (9 / 5) * tempСelsius + 32;
+    const tempCelsius = +prompt("Введите температуру в градусах Цельсия:");
+    let tempFahrenheit = (9 / 5) * tempCelsius + 32;
     if (tempFahrenheit % 1 !== 0) {
       tempFahrenheit = tempFahrenheit.toFixed(1);
     }
 
-    alert(`Цельсий: ${tempСelsius}, Фаренгейт: ${tempFahrenheit}`);
+    alert(`Цельсий: ${tempCelsius}, Фаренгейт: ${tempFahrenheit}`);
   </script>
 </body>
 
