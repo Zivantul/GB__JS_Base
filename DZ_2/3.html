@@ -26,12 +26,12 @@
     const a = +prompt("Введите значение переменной а:");
     const b = +prompt("Введите значение переменной а:");
 
-    if (a !== NaN && b !== NaN && a !== undefined && b !== undefined) {
+    if (Number.isNan(a) && Number.isNan(b) && a !== undefined && b !== undefined) {
       if (a > 0 && b > 0) {
         console.log(a - b);
       } else if (a < 0 && b < 0) {
         console.log(a * b);
-      } else if ((a > 0 && b < 0) || (a < 0 && b > 0)) {
+      } else if (a > 0 && b < 0 || a < 0 && b > 0) {
         console.log(a + b);
       }
     }
