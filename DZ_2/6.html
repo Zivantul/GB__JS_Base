@@ -28,8 +28,8 @@ console.log(declinationOfNumber(5, "стул", "стула", "стульев"));
     "use strict";
 
     // Число яблок, можно пробовать поставить свое целое, положительное число.
-    const applesNumber = Math.round(10 * Math.random());
-    //const applesNumber = prompt("Сколько у тебя яблок?");
+    //const applesNumber = Math.round(10 * Math.random());
+    const applesNumber = prompt("Сколько у тебя яблок?");
 
     // Получаем от функции одно из слов "яблоко", "яблока" или "яблок".
     const word = declinationOfNumber(applesNumber, "яблоко", "яблока", "яблок");
@@ -50,7 +50,7 @@ console.log(declinationOfNumber(5, "стул", "стула", "стульев"));
      * @param {String} five - The value for every 5,6,7,8,9,10 units
      */
     function declinationOfNumber(count, one, two, five) {
-      if (count >= 11 && count <= 19) {
+      if (count >= 11 && count <= 19 || count % 10 >= 11 && count % 10 < 19) {
         return five;
       } else {
         const remainUnits = count % 10;
