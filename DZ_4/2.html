@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework_4_2</title>
+</head>
+
+<body>
+  <!--
+Обязательное задание.
+
+Необходимо данное задание выполнить в es5 стиле и в es6 стиле.
+Необходимо создать функцию-конструктор/класс для поста в социальной сети.
+Названия: `PostES5` для es5 стиля и `PostES6` для es6 стиля.
+Пост должен хранить:
+1. Автора поста (имени достаточно).
+2. Текст поста.
+3. Дату и время последнего изменения поста.
+Данные автора поста и текст поста необходимо передавать при создании
+экземпляра объекта.
+Каждому экземпляру объекта должен быть доступен метод `edit`, который будет
+менять текст поста.
+
+---
+
+Необходимо создать функцию-конструктор/класс для закрепленного поста в
+социальной сети.
+Названия: `AttachedPostES5` для es5 стиля и `AttachedPostES6` для es6 стиля.
+Закрепленный пост должен наследоваться от обычного поста.
+Данные автора поста и текст поста необходимо передавать при создании
+экземпляра объекта.
+Закрепленный пост должен иметь свойство `highlighted`, в котором по умолчанию
+будет лежать значение false (это свойство будет обозначать, будет ли наш
+закрепленный пост подсвечен).
+У экземпляров объекта закрепленного поста должен быть метод с названием
+`makeTextHighlighted`, который сделает так, чтобы наш пост стал подсвеченным
+(будет менять свойство `highlighted`).
+
+---
+
+Подсказки:
+1. Задание сложное, советую делать по аналогии с примером на онлайн-занятии.
+2. Обратите внимание что пост хранит "дату и время последнего изменения
+поста", это значит что если пост кто-то изменит (например вызовет какой-то
+метод, который изменит что-то в посте), дата и время последнего изменения
+поста также должна измениться.
+3. Выполняйте все по порядку, не стоит пытаться сделать все сразу, иначе можно
+что-нибудь пропустить.
+4. Если непонятно условие - задайте вопрос.
+-->
+  <script>
+    "use strict";
+
+    console.log('Для ES5:');
+    function PostES5(postAuthor, postText) {
+      this.postAuthor = postAuthor;
+      this.postText = postText;
+      this.postDate = getActualDateTime();
+    }
+    PostES5.prototype.edit = function () {
+      this.postText = prompt(`отредактируйте текст ${this.postText}:`);
+      this.postDate = getActualDateTime();
+    }
+
+    function AttachedPostES5(postAuthor, postText, highlighted = false) {
+      PostES5.call(this, postAuthor, postText);
+      this.highlighted = highlighted;
+    }
+    AttachedPostES5.prototype = Object.create(PostES5.prototype);
+    AttachedPostES5.prototype.makeTextHighlighted = function () {
+      this.highlighted = true;
+    }
+
+    // тестим для ES5
+    const post1 = new PostES5("Ann", "blablabla");
+    const attpost1 = new AttachedPostES5('Ann', 'opana');
+
+    console.log(post1);
+    post1.edit();
+    console.log(post1);
+
+    console.log(attpost1);
+    attpost1.makeTextHighlighted();
+    console.log(attpost1);
+    attpost1.edit();
+    console.log(attpost1);
+
+
+    console.log('Для ES6:')
+
+    class PostES6 {
+      constructor(postAuthor, postText) {
+        this.postAuthor = postAuthor;
+        this.postText = postText;
+        this.postDate = getActualDateTime();
+      }
+
+      edit() {
+        this.postText = prompt(`отредактируйте текст ${this.postText}:`);
+        this.postDate = getActualDateTime();
+      }
+    }
+
+    class AttachedPostES6 extends PostES6 {
+      constructor(postAuthor, postText, highlighted = false) {
+        super(postAuthor, postText);
+        this.highlighted = highlighted;
+      }
+
+      makeTextHighlighted() {
+        this.highlighted = true;
+      }
+    }
+
+    // тестим для ES6
+    const post2 = new PostES6("Bill", "blablabla");
+    const attpost2 = new AttachedPostES6('Bill', 'opana');
+
+    console.log(post2);
+    post2.edit();
+    console.log(post2);
+
+    console.log(attpost2);
+    attpost2.makeTextHighlighted();
+    console.log(attpost2);
+    attpost2.edit();
+    console.log(attpost2);
+
+
+
+    // функция для определения текущих даты и времени (дд.мм.ггггТчч:мм:сс)
+    // сама по себе дата не относится к классам Постов, поэтому решил вынести
+    function getActualDateTime() {
+      const accDateTime = new Date();
+      const res = accDateTime.getDate() + '.' + accDateTime.getMonth() + '.'
+        + accDateTime.getFullYear() + 'T' + accDateTime.getHours() + ':'
+        + accDateTime.getMinutes() + ':' + accDateTime.getSeconds();
+      return res;
+    }
+
+  </script>
+</body>
+
+</html>
